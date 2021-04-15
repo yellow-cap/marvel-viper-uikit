@@ -1,5 +1,5 @@
 protocol IHeroesService {
-    func getHeroes()
+    func getHeroes(completionHandler: @escaping ([Hero]?, Error?) -> Void)
 }
 
 class HeroesService: IHeroesService {
@@ -9,21 +9,22 @@ class HeroesService: IHeroesService {
         fetcher = heroesFetcher
     }
 
-    func getHeroes() {
+    func getHeroes(completionHandler: @escaping ([Hero]?, Error?) -> Void) {
         // fetchHeroesFromDb()
 
-        fetchHeroesFromApi()
+        fetchHeroesFromApi(completionHandler)
     }
 
-    private func fetchHeroesFromApi() {
-        print("<<DEV>> Fetch data from api")
-/*        fetcher.fetchHeroes { result in
-            print("<<<DEV>>> Heroes: \(result)")
-        }*/
+    private func fetchHeroesFromApi(_ completionHandler: @escaping ([Hero]?, Error?) -> Void) {
+        print("<<<DEV>>> Fetch data from api")
+
+        fetcher.fetchHeroes { heroes, error in
+            completionHandler(heroes, error)
+        }
     }
 
     private func fetchHeroesFromDb() {
-        print("<<DEV>> Fetch data from db")
+        print("<<<DEV>>> Fetch data from db")
     }
 }
 

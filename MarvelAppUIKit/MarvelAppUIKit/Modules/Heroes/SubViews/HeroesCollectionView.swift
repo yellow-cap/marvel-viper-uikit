@@ -1,9 +1,15 @@
 import UIKit
 
+struct HeroesCollectionViewProps: IViewProps {
+    let loadHeroes: () -> Void
+}
+
 class HeroesCollectionView: UICollectionView,
         UICollectionViewDelegateFlowLayout,
-        UICollectionViewDataSource {
+        UICollectionViewDataSource,
+        IView {
     private let cellReuseIdentifier = "heroes_collection_cell"
+    private var props: HeroesCollectionViewProps? = nil
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -21,6 +27,15 @@ class HeroesCollectionView: UICollectionView,
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .blue
         register(HeroesCollectionViewCell.self, forCellWithReuseIdentifier: cellReuseIdentifier)
+    }
+
+    func update(_ newProps: IViewProps) {
+        guard let props = newProps as? HeroesCollectionViewProps else {
+            print("<<<DEV>> props is not HeroesCollectionViewProps")
+            return
+        }
+
+        self.props = props
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -16,8 +16,13 @@ class HeroesView: UIViewController, IHeroesView {
 
     override func viewDidLoad() {
         view.backgroundColor = .systemBackground
-        print("<<<DEV>>> Heroes view did load")
-        presenter?.viewDidLoad()
+        getHeroes()
+    }
+
+    func update(_ newProps: IViewProps) {
+        heroesCollectionView.update(HeroesCollectionViewProps(
+                loadHeroes: getHeroes
+        ))
     }
 
     private func placeView() {
@@ -29,5 +34,13 @@ class HeroesView: UIViewController, IHeroesView {
             heroesCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             heroesCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+
+    private func getHeroes() {
+        guard let presenter = presenter else {
+            return
+        }
+
+        presenter.getHeroes()
     }
 }
