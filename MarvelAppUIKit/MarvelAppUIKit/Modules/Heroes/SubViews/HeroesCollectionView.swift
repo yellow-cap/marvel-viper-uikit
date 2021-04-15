@@ -20,7 +20,7 @@ class HeroesCollectionView: UICollectionView,
         dataSource = self
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .blue
-        register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellReuseIdentifier)
+        register(HeroesCollectionViewCell.self, forCellWithReuseIdentifier: cellReuseIdentifier)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -32,8 +32,13 @@ class HeroesCollectionView: UICollectionView,
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath) as? HeroesCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+
+        cell.update(name: "Name \(indexPath)")
         cell.backgroundColor = .red
+
         return cell
     }
 }
