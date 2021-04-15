@@ -10,20 +10,20 @@ class HeroesService: IHeroesService {
     }
 
     func getHeroes() {
-        // fetch heroes from db
-        fetchHeroesFromDb()
-        // fetch heroes from api
+        // fetchHeroesFromDb()
+
         fetchHeroesFromApi()
     }
 
     private func fetchHeroesFromApi() {
-        fetcher.fetchHeroes { result in
+        print("<<DEV>> Fetch data from api")
+/*        fetcher.fetchHeroes { result in
             print("<<<DEV>>> Heroes: \(result)")
-        }
+        }*/
     }
 
     private func fetchHeroesFromDb() {
-
+        print("<<DEV>> Fetch data from db")
     }
 }
 

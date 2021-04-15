@@ -16,6 +16,7 @@
 		58C7A45C0DB8525B6723539E /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7AD7E055F670C92ED93CD /* ApiConstants.swift */; };
 		58C7A45FB4A224C2ADB0C62D /* IView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7AE47C0FF08A4F31022E8 /* IView.swift */; };
 		58C7A52F84F5CA7C9F939766 /* HeroesInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A81636324BAE08D749CB /* HeroesInteraction.swift */; };
+		58C7A72E155011A58136364A /* HeroesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A4946FF70BEBA14FD611 /* HeroesCollectionView.swift */; };
 		58C7A7FB8554CA1B7FE5537A /* HeroesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A2A6FF85A7CC54A29EC9 /* HeroesService.swift */; };
 		58C7A88344DDDE51E6823BE9 /* HeroesFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7AE7A75C0F0D32B6369A7 /* HeroesFetcher.swift */; };
 		58C7A9F7DF8513E91F663A60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58C7A3AA4E61C3DB06270584 /* LaunchScreen.storyboard */; };
@@ -56,6 +57,7 @@
 		58C7A2606E33DF7E237F9485 /* IModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IModule.swift; sourceTree = "<group>"; };
 		58C7A2A6FF85A7CC54A29EC9 /* HeroesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroesService.swift; sourceTree = "<group>"; };
 		58C7A44402122DF873617CF3 /* IPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPresenter.swift; sourceTree = "<group>"; };
+		58C7A4946FF70BEBA14FD611 /* HeroesCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroesCollectionView.swift; sourceTree = "<group>"; };
 		58C7A5001B61A5450C68547F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		58C7A5CB12BDF658E5F35083 /* ApiFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiFetcher.swift; sourceTree = "<group>"; };
 		58C7A72167342BBFE2310997 /* ApiUrlBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiUrlBuilder.swift; sourceTree = "<group>"; };
@@ -132,6 +134,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		58C7A46E243719736D76824F /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				58C7A4946FF70BEBA14FD611 /* HeroesCollectionView.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
 		58C7A75D6713EF752077CF24 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +166,7 @@
 				58C7A9FDB71D2B3EC4D7EA61 /* HeroesView.swift */,
 				58C7AF425EDF3B5CF58D7F94 /* HeroesPresenter.swift */,
 				58C7A81636324BAE08D749CB /* HeroesInteraction.swift */,
+				58C7A46E243719736D76824F /* SubViews */,
 			);
 			path = Heroes;
 			sourceTree = "<group>";
@@ -363,6 +374,7 @@
 				58C7A88344DDDE51E6823BE9 /* HeroesFetcher.swift in Sources */,
 				58C7A7FB8554CA1B7FE5537A /* HeroesService.swift in Sources */,
 				58C7A0D4296A7A74AF001ED7 /* StringExtension.swift in Sources */,
+				58C7A72E155011A58136364A /* HeroesCollectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
