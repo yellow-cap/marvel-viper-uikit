@@ -8,7 +8,8 @@ class HeroesView: UIViewController, IHeroesView {
     var presenter: IHeroesPresenter?
 
     override func viewDidLoad() {
-        super.viewDidLoad()
+        view.backgroundColor = .systemBackground
+        presenter?.viewDidLoad()
         print("<<<DEV>>> Heroes view did load")
     }
 }

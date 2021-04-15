@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		58C7A075C08651A2FFEDCE51 /* MarvelAppUIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7AF8558EEDEF934CCE324 /* MarvelAppUIKitTests.swift */; };
+		58C7A0D4296A7A74AF001ED7 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A0C86E73D0594F7485E7 /* StringExtension.swift */; };
 		58C7A12BDD521006DF5689F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A880EFDEC141281254E2 /* AppDelegate.swift */; };
 		58C7A2CF0E213AAC89565F8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58C7AD2C8909A8987CF87140 /* Assets.xcassets */; };
 		58C7A2F37B1ACF940CA9A520 /* ApiUrlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A72167342BBFE2310997 /* ApiUrlBuilder.swift */; };
@@ -15,6 +16,7 @@
 		58C7A45C0DB8525B6723539E /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7AD7E055F670C92ED93CD /* ApiConstants.swift */; };
 		58C7A45FB4A224C2ADB0C62D /* IView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7AE47C0FF08A4F31022E8 /* IView.swift */; };
 		58C7A52F84F5CA7C9F939766 /* HeroesInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A81636324BAE08D749CB /* HeroesInteraction.swift */; };
+		58C7A7FB8554CA1B7FE5537A /* HeroesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A2A6FF85A7CC54A29EC9 /* HeroesService.swift */; };
 		58C7A88344DDDE51E6823BE9 /* HeroesFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7AE7A75C0F0D32B6369A7 /* HeroesFetcher.swift */; };
 		58C7A9F7DF8513E91F663A60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58C7A3AA4E61C3DB06270584 /* LaunchScreen.storyboard */; };
 		58C7AA8D2EC64AAC8972D6C3 /* HeroesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A9FDB71D2B3EC4D7EA61 /* HeroesView.swift */; };
@@ -48,9 +50,11 @@
 
 /* Begin PBXFileReference section */
 		58C7A0416BD84503974675ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		58C7A0C86E73D0594F7485E7 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		58C7A0E62110ABCBA510A202 /* ApiRequestType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiRequestType.swift; sourceTree = "<group>"; };
 		58C7A1A68A54DF271A45BEFC /* HeroesModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroesModule.swift; sourceTree = "<group>"; };
 		58C7A2606E33DF7E237F9485 /* IModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IModule.swift; sourceTree = "<group>"; };
+		58C7A2A6FF85A7CC54A29EC9 /* HeroesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroesService.swift; sourceTree = "<group>"; };
 		58C7A44402122DF873617CF3 /* IPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPresenter.swift; sourceTree = "<group>"; };
 		58C7A5001B61A5450C68547F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		58C7A5CB12BDF658E5F35083 /* ApiFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiFetcher.swift; sourceTree = "<group>"; };
@@ -156,6 +160,14 @@
 			path = Heroes;
 			sourceTree = "<group>";
 		};
+		58C7A8CC08ABC56F065723C6 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				58C7A2A6FF85A7CC54A29EC9 /* HeroesService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		58C7AA682E3029174F261742 /* MarvelAppUIKitTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +209,14 @@
 			path = HeroesFetcher;
 			sourceTree = "<group>";
 		};
+		58C7AF5E8C77A49AC1B6DD7E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				58C7A0C86E73D0594F7485E7 /* StringExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		58C7AFD0D34EECA0428FA14C /* MarvelAppUIKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -208,6 +228,8 @@
 				58C7A1D91C62061CA4A135C6 /* Utils */,
 				58C7A75D6713EF752077CF24 /* Modules */,
 				58C7ACBFC70C6541766DC6F4 /* Api */,
+				58C7A8CC08ABC56F065723C6 /* Services */,
+				58C7AF5E8C77A49AC1B6DD7E /* Extensions */,
 			);
 			path = MarvelAppUIKit;
 			sourceTree = "<group>";
@@ -339,6 +361,8 @@
 				58C7A45C0DB8525B6723539E /* ApiConstants.swift in Sources */,
 				58C7A2F37B1ACF940CA9A520 /* ApiUrlBuilder.swift in Sources */,
 				58C7A88344DDDE51E6823BE9 /* HeroesFetcher.swift in Sources */,
+				58C7A7FB8554CA1B7FE5537A /* HeroesService.swift in Sources */,
+				58C7A0D4296A7A74AF001ED7 /* StringExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

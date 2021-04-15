@@ -3,7 +3,11 @@ import UIKit
 class HeroesModule: IModule {
     func build() -> UIViewController {
         let view = HeroesView()
-        let interaction = HeroesInteraction()
+        let interaction = HeroesInteraction(
+                heroesService: HeroesService(
+                        heroesFetcher: HeroesFetcher(apiFetcher: ApiFetcher())
+                )
+        )
         let presenter = HeroesPresenter()
 
         view.presenter = presenter
