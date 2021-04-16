@@ -1,3 +1,5 @@
+import Foundation
+
 protocol IHeroesService {
     var delegate: HeroesServiceDelegate? { get set }
     func getHeroes(loadingOffset: Int)
@@ -43,16 +45,20 @@ class HeroesService: IHeroesService {
     }
 
     private func saveHeroesToDb(_ heroes: [Hero]) {
-        for hero in heroes {
-            let heroDbEntity = HeroDbEntity()
-            heroDbEntity.id = hero.id
-            heroDbEntity.name = hero.name
-            heroDbEntity.desc = hero.description
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            for hero in heroes {
+                let heroDbEntity = HeroDbEntity()
+                heroDbEntity.id = hero.id
+                heroDbEntity.name = hero.name
+                heroDbEntity.desc = hero.description
 
-            do {
-                try dbStorage.insert(dbEntity: heroDbEntity)
-            } catch {
-                delegate?.onGetHeroesComplete(heroes: nil, error: error)
+                do {
+                    try self?.dbStorage.insert(dbEntity: heroDbEntity)
+                } catch {
+                    DispatchQueue.main.async {
+                        self?.delegate?.onGetHeroesComplete(heroes: nil, error: error)
+                    }
+                }
             }
         }
     }
