@@ -23,7 +23,12 @@ class ApiFetcher: IApiFetcher {
     ) {
         guard let url = buildRequestUrl(path: path, queryParams: queryParams) else {
             completionHandler(
-                    .failure(ApiError(message: "ApiFetcher: Couldn't build request url."))
+                    .failure(
+                            ApiError(
+                                    message: "ApiFetcher: Couldn't build request url.",
+                                    error: nil
+                            )
+                    )
             )
 
             return
@@ -40,7 +45,12 @@ class ApiFetcher: IApiFetcher {
         let task = session.dataTask(with: request) { data, response, error in
             if let error = error {
                 completionHandler(
-                        .failure(ApiError(message: "ApiFetcher: Api response error \(error.localizedDescription)."))
+                        .failure(
+                                ApiError(
+                                        message: "ApiFetcher: Api response error.",
+                                        error: error
+                                )
+                        )
                 )
 
                 return
@@ -48,7 +58,12 @@ class ApiFetcher: IApiFetcher {
 
             guard let response = response as? HTTPURLResponse else {
                 completionHandler(
-                        .failure(ApiError(message: "ApiFetcher: Couldn't get response as HTTPURLResponse."))
+                        .failure(
+                                ApiError(
+                                        message: "ApiFetcher: Couldn't get response as HTTPURLResponse.",
+                                        error: nil
+                                )
+                        )
                 )
 
                 return
@@ -56,7 +71,12 @@ class ApiFetcher: IApiFetcher {
 
             guard response.statusCode == 200 else {
                 completionHandler(
-                        .failure(ApiError(message: "ApiFetcher: Api response code: \(response.statusCode)."))
+                        .failure(
+                                ApiError(
+                                        message: "ApiFetcher: Api response code: \(response.statusCode).",
+                                        error: nil
+                                )
+                        )
                 )
 
                 return
@@ -64,7 +84,11 @@ class ApiFetcher: IApiFetcher {
 
             guard let data = data else {
                 completionHandler(
-                        .failure(ApiError(message: "ApiFetcher: Couldn't get data from response"))
+                        .failure(
+                                ApiError(
+                                        message: "ApiFetcher: Couldn't get data from response",
+                                        error: nil)
+                        )
                 )
 
                 return

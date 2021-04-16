@@ -53,14 +53,11 @@ class HeroesFetcher: IHeroesFetcher {
             } catch {
                 completionHandler(
                         nil,
-                        ApiError(message: "HeroesFetcher: Couldn't parse response data")
+                        ApiError(message: "HeroesFetcher: Couldn't parse response data", error: nil)
                 )
             }
         case let .failure(error):
-            completionHandler(
-                    nil,
-                    ApiError(message: error.localizedDescription)
-            )
+            completionHandler(nil, error)
         }
     }
 }
