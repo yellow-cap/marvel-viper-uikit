@@ -23,6 +23,7 @@ class HeroesCollectionViewCell: UICollectionViewCell, IView {
     override func prepareForReuse() {
         nameLabel.text = ""
         descriptionLabel.text = ""
+        imageView.image = nil
 
         super.prepareForReuse()
     }

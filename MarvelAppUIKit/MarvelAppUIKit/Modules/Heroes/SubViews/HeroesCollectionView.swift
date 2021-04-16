@@ -32,7 +32,6 @@ class HeroesCollectionView: UICollectionView,
 
     func update(_ newProps: IViewProps) {
         guard let props = newProps as? HeroesCollectionViewProps else {
-            print("<<<DEV>> props is not HeroesCollectionViewProps")
             return
         }
 
