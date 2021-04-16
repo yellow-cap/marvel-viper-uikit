@@ -20,9 +20,25 @@ class HeroesService: IHeroesService {
     }
 
     func getHeroes(loadingOffset: Int) {
-        // fetchHeroesFromDb()
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            let semaphore = DispatchSemaphore(value: 0)
 
-        fetchHeroesFromApi(loadingOffset: loadingOffset)
+            var heroes = [Hero]()
+            DispatchQueue.global(qos: .background).async {
+                heroes = self?.fetchHeroesFromDb() ?? []
+                semaphore.signal()
+            }
+
+            semaphore.wait()
+
+            if heroes.isEmpty {
+                self?.fetchHeroesFromApi(loadingOffset: loadingOffset)
+            } else {
+                DispatchQueue.main.async {
+                    self?.delegate?.onGetHeroesComplete(heroes: heroes, error: nil)
+                }
+            }
+        }
     }
 
     private func fetchHeroesFromApi(loadingOffset: Int) {
@@ -63,8 +79,28 @@ class HeroesService: IHeroesService {
         }
     }
 
-    private func fetchHeroesFromDb() {
+    private func fetchHeroesFromDb() -> [Hero] {
         print("<<<DEV>>> Fetch data from db")
+        var heroes = [Hero]()
+        do {
+            let dbHeroes = try dbStorage.findAll(dbEntityType: HeroDbEntity.self)
+            dbHeroes.forEach { obj in
+                guard let object = obj as? HeroDbEntity else {
+                    return
+                }
+
+                heroes.append(Hero(
+                        id: object.id,
+                        name: object.name,
+                        description: object.desc)
+                )
+            }
+
+        } catch {
+            delegate?.onGetHeroesComplete(heroes: nil, error: error)
+        }
+
+        return heroes
     }
 }
 
