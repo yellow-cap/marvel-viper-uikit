@@ -6,6 +6,7 @@ class DbStorage: IDbStorage {
     init() throws {
         do {
             db = try Realm()
+            print("<<<DEV>>> Realm db url: \(String(describing: db?.configuration.fileURL))")
         } catch {
             throw DbError(
                     message: "DbStorage, couldn't initialize Realm",
