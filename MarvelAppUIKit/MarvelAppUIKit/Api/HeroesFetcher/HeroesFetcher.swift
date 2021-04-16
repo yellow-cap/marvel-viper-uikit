@@ -42,22 +42,29 @@ class HeroesFetcher: IHeroesFetcher {
 
     private func onFetchHeroesComplete(
             _ result: Result<Data?, ApiError>,
-            _ completionHandler: ([Hero]?, ApiError?) -> Void
+            _ completionHandler: @escaping ([Hero]?, ApiError?) -> Void
     ) {
         switch result {
         case let .success(data):
             do {
                 let parsedHeroes = try decoder.decode(HeroesApiResponse.self, from: data!)
-                completionHandler(parsedHeroes.data.results, nil)
+
+                DispatchQueue.main.async {
+                    completionHandler(parsedHeroes.data.results, nil)
+                }
 
             } catch {
-                completionHandler(
-                        nil,
-                        ApiError(message: "HeroesFetcher: Couldn't parse response data", error: nil)
-                )
+                DispatchQueue.main.async {
+                    completionHandler(
+                            nil,
+                            ApiError(message: "HeroesFetcher: Couldn't parse response data", error: nil)
+                    )
+                }
             }
         case let .failure(error):
-            completionHandler(nil, error)
+            DispatchQueue.main.async {
+                completionHandler(nil, error)
+            }
         }
     }
 }

@@ -34,9 +34,7 @@ class HeroesInteraction: IHeroesInteraction, HeroesServiceDelegate {
             return
         }
 
-        DispatchQueue.main.async { [weak self] in
-            self?.heroes.append(contentsOf: heroes)
-            self?.presenter?.updateView(heroes: self?.heroes ?? [])
-        }
+        self.heroes.append(contentsOf: heroes)
+        presenter?.updateView(heroes: self.heroes)
     }
 }
