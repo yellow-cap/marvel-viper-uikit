@@ -7,9 +7,11 @@ protocol IHeroesService {
 
 class HeroesService: IHeroesService {
     private let fetcher: IHeroesFetcher
+    private let dbStorage: IDbStorage
 
-    init(heroesFetcher: IHeroesFetcher) {
+    init(heroesFetcher: IHeroesFetcher, dbStorage: IDbStorage) {
         fetcher = heroesFetcher
+        self.dbStorage = dbStorage
     }
 
     func getHeroes(

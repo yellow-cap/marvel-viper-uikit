@@ -5,7 +5,8 @@ class HeroesModule: IModule {
         let view = HeroesView()
         let interaction = HeroesInteraction(
                 heroesService: HeroesService(
-                        heroesFetcher: HeroesFetcher(apiFetcher: ApiFetcher())
+                        heroesFetcher: HeroesFetcher(apiFetcher: ApiFetcher()),
+                        dbStorage: try! DbStorage()
                 )
         )
         let presenter = HeroesPresenter()
