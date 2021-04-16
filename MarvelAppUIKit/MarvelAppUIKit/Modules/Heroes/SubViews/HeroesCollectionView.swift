@@ -51,7 +51,7 @@ class HeroesCollectionView: UICollectionView,
             return UICollectionViewCell()
         }
 
-        cell.update(name: "Name \(indexPath)")
+        cell.update(name: "Name \(indexPath.item)", description: "Description \(indexPath.item)")
         cell.backgroundColor = .red
 
         return cell

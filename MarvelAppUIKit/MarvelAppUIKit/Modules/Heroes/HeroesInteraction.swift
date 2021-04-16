@@ -8,6 +8,7 @@ protocol IHeroesInteraction: IInteraction {
 class HeroesInteraction: IHeroesInteraction {
     weak var presenter: IHeroesPresenter?
     private let heroesService: IHeroesService
+
     private var heroes = [Hero]()
 
     init(heroesService: IHeroesService) {

@@ -16,7 +16,7 @@ class HeroesView: UIViewController, IHeroesView {
 
     override func viewDidLoad() {
         view.backgroundColor = .systemBackground
-        getHeroes()
+        // getHeroes()
     }
 
     func update(_ newProps: IViewProps) {
