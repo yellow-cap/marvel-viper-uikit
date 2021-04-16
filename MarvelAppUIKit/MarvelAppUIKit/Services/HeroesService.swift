@@ -1,5 +1,8 @@
 protocol IHeroesService {
-    func getHeroes(completionHandler: @escaping ([Hero]?, Error?) -> Void)
+    func getHeroes(
+            completionHandler: @escaping ([Hero]?, Error?) -> Void,
+            loadingOffset: Int
+    )
 }
 
 class HeroesService: IHeroesService {
@@ -9,18 +12,21 @@ class HeroesService: IHeroesService {
         fetcher = heroesFetcher
     }
 
-    func getHeroes(completionHandler: @escaping ([Hero]?, Error?) -> Void) {
+    func getHeroes(
+            completionHandler: @escaping ([Hero]?, Error?) -> Void,
+            loadingOffset: Int
+    ) {
         // fetchHeroesFromDb()
 
-        fetchHeroesFromApi(completionHandler)
+        fetchHeroesFromApi(completionHandler, loadingOffset: loadingOffset)
     }
 
-    private func fetchHeroesFromApi(_ completionHandler: @escaping ([Hero]?, Error?) -> Void) {
-        print("<<<DEV>>> Fetch data from api")
-
-        fetcher.fetchHeroes { heroes, error in
-            completionHandler(heroes, error)
-        }
+    private func fetchHeroesFromApi(
+            _ completionHandler: @escaping ([Hero]?, Error?) -> Void,
+            loadingOffset: Int
+    ) {
+        print("<<<DEV>>> Fetch data from api with offset \(loadingOffset)")
+        fetcher.fetchHeroes(completionHandler, loadingOffset: loadingOffset)
     }
 
     private func fetchHeroesFromDb() {

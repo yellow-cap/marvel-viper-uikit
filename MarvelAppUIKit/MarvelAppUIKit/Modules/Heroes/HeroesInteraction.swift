@@ -16,7 +16,12 @@ class HeroesInteraction: IHeroesInteraction {
     }
 
     func getHeroes() {
-        heroesService.getHeroes(completionHandler: onGetHeroesComplete)
+        let loadingOffset = heroes.count
+
+        heroesService.getHeroes(
+                completionHandler: onGetHeroesComplete,
+                loadingOffset: loadingOffset
+        )
     }
 
     func onGetHeroesComplete(heroes: [Hero]?, error: Error?) {
