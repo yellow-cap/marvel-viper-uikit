@@ -1,34 +1,36 @@
 protocol IHeroesService {
-    func getHeroes(
-            completionHandler: @escaping ([Hero]?, Error?) -> Void,
-            loadingOffset: Int
-    )
+    var delegate: HeroesServiceDelegate? { get set }
+    func getHeroes(loadingOffset: Int)
+}
+
+protocol HeroesServiceDelegate {
+    func onGetHeroesComplete(heroes: [Hero]?, error: Error?)
 }
 
 class HeroesService: IHeroesService {
+    var delegate: HeroesServiceDelegate?
     private let fetcher: IHeroesFetcher
     private let dbStorage: IDbStorage
+
 
     init(heroesFetcher: IHeroesFetcher, dbStorage: IDbStorage) {
         fetcher = heroesFetcher
         self.dbStorage = dbStorage
     }
 
-    func getHeroes(
-            completionHandler: @escaping ([Hero]?, Error?) -> Void,
-            loadingOffset: Int
-    ) {
+    func getHeroes(loadingOffset: Int) {
         // fetchHeroesFromDb()
 
-        fetchHeroesFromApi(completionHandler, loadingOffset: loadingOffset)
+        fetchHeroesFromApi(loadingOffset: loadingOffset)
     }
 
-    private func fetchHeroesFromApi(
-            _ completionHandler: @escaping ([Hero]?, Error?) -> Void,
-            loadingOffset: Int
-    ) {
+    private func fetchHeroesFromApi(loadingOffset: Int) {
         print("<<<DEV>>> Fetch data from api with offset \(loadingOffset)")
-        fetcher.fetchHeroes(completionHandler, loadingOffset: loadingOffset)
+        fetcher.fetchHeroes(onFetchHeroesFromApiComplete, loadingOffset: loadingOffset)
+    }
+
+    private func onFetchHeroesFromApiComplete(heroes: [Hero]?, error: Error?) {
+        delegate?.onGetHeroesComplete(heroes: heroes, error: error)
     }
 
     private func fetchHeroesFromDb() {

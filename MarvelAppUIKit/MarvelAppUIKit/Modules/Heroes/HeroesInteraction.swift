@@ -5,23 +5,21 @@ protocol IHeroesInteraction: IInteraction {
     func getHeroes()
 }
 
-class HeroesInteraction: IHeroesInteraction {
+class HeroesInteraction: IHeroesInteraction, HeroesServiceDelegate {
     weak var presenter: IHeroesPresenter?
-    private let heroesService: IHeroesService
+    private var heroesService: IHeroesService
 
     private var heroes = [Hero]()
 
     init(heroesService: IHeroesService) {
         self.heroesService = heroesService
+        self.heroesService.delegate = self
     }
 
     func getHeroes() {
         let loadingOffset = heroes.count
 
-        heroesService.getHeroes(
-                completionHandler: onGetHeroesComplete,
-                loadingOffset: loadingOffset
-        )
+        heroesService.getHeroes(loadingOffset: loadingOffset)
     }
 
     func onGetHeroesComplete(heroes: [Hero]?, error: Error?) {
