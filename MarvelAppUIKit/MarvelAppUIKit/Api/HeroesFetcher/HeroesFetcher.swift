@@ -53,7 +53,7 @@ class HeroesFetcher: IHeroesFetcher {
             } catch {
                 completionHandler(
                         nil,
-                        ApiError(message: "WeatherForecastFetcher: Couldn't parse response data")
+                        ApiError(message: "HeroesFetcher: Couldn't parse response data")
                 )
             }
         case let .failure(error):
