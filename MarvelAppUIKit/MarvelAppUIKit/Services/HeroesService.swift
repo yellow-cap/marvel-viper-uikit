@@ -12,7 +12,6 @@ class HeroesService: IHeroesService {
     private let fetcher: IHeroesFetcher
     private let dbStorage: IDbStorage
 
-
     init(heroesFetcher: IHeroesFetcher, dbStorage: IDbStorage) {
         fetcher = heroesFetcher
         self.dbStorage = dbStorage
@@ -30,7 +29,32 @@ class HeroesService: IHeroesService {
     }
 
     private func onFetchHeroesFromApiComplete(heroes: [Hero]?, error: Error?) {
-        delegate?.onGetHeroesComplete(heroes: heroes, error: error)
+        if let error = error {
+            delegate?.onGetHeroesComplete(heroes: nil, error: error)
+            return
+        }
+
+        guard let heroes = heroes else {
+            return
+        }
+
+        saveHeroesToDb(heroes)
+        delegate?.onGetHeroesComplete(heroes: heroes, error: nil)
+    }
+
+    private func saveHeroesToDb(_ heroes: [Hero]) {
+        for hero in heroes {
+            let heroDbEntity = HeroDbEntity()
+            heroDbEntity.id = hero.id
+            heroDbEntity.name = hero.name
+            heroDbEntity.desc = hero.description
+
+            do {
+                try dbStorage.insert(dbEntity: heroDbEntity)
+            } catch {
+                delegate?.onGetHeroesComplete(heroes: nil, error: error)
+            }
+        }
     }
 
     private func fetchHeroesFromDb() {
