@@ -2,7 +2,7 @@ protocol IHeroesPresenter: IPresenter {
     var interaction: IHeroesInteraction? { get set }
     var view: IHeroesView? { get set }
     func getHeroes()
-    func updateHeroesList()
+    func updateView(heroes: [Hero])
 }
 
 class HeroesPresenter: IHeroesPresenter {
@@ -13,7 +13,7 @@ class HeroesPresenter: IHeroesPresenter {
         interaction?.getHeroes()
     }
 
-    func updateHeroesList() {
-        // view?.update(<#T##newProps: IViewProps##MarvelAppUIKit.IViewProps#>)
+    func updateView(heroes: [Hero]) {
+        view?.update(HeroesViewProps(heroes: heroes))
     }
 }

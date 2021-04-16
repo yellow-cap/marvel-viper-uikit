@@ -21,15 +21,19 @@ class HeroesInteraction: IHeroesInteraction {
 
     func onGetHeroesComplete(heroes: [Hero]?, error: Error?) {
         if let error = error {
-            print(error.localizedDescription)
+            // presenter show error
 
             return
         }
 
+        guard let heroes = heroes else {
+            // presenter show error
+            return
+        }
+
         DispatchQueue.main.async { [weak self] in
-            self?.heroes.append(contentsOf: heroes!)
-            print(self?.heroes)
-            self?.presenter?.updateHeroesList()
+            self?.heroes.append(contentsOf: heroes)
+            self?.presenter?.updateView(heroes: self?.heroes ?? [])
         }
     }
 }

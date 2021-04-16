@@ -4,6 +4,10 @@ protocol IHeroesView: IView {
     var presenter: IHeroesPresenter? { get set }
 }
 
+struct HeroesViewProps: IViewProps {
+    let heroes: [Hero]
+}
+
 class HeroesView: UIViewController, IHeroesView {
     var presenter: IHeroesPresenter?
     private var heroesCollectionView = HeroesCollectionView(frame: .zero)
@@ -16,11 +20,16 @@ class HeroesView: UIViewController, IHeroesView {
 
     override func viewDidLoad() {
         view.backgroundColor = .systemBackground
-        // getHeroes()
+        getHeroes()
     }
 
     func update(_ newProps: IViewProps) {
+        guard let props = newProps as? HeroesViewProps else {
+            return
+        }
+
         heroesCollectionView.update(HeroesCollectionViewProps(
+                heroes: props.heroes,
                 loadHeroes: getHeroes
         ))
     }

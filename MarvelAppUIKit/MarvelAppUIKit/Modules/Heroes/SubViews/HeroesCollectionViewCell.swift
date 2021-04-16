@@ -1,6 +1,10 @@
 import UIKit
 
-class HeroesCollectionViewCell: UICollectionViewCell {
+struct HeroesCollectionViewCellProps: IViewProps {
+    let hero: Hero?
+}
+
+class HeroesCollectionViewCell: UICollectionViewCell, IView {
     private var nameLabel = UILabel()
     private var descriptionLabel = UILabel()
     private var imageView = UIImageView()
@@ -23,9 +27,13 @@ class HeroesCollectionViewCell: UICollectionViewCell {
         super.prepareForReuse()
     }
 
-    func update(name: String, description: String) {
-        nameLabel.text = name
-        descriptionLabel.text = description
+    func update(_ newProps: IViewProps) {
+        guard let props = newProps as? HeroesCollectionViewCellProps else {
+            return
+        }
+
+        nameLabel.text = props.hero?.name ?? "-"
+        descriptionLabel.text = props.hero?.description ?? "-"
         imageView.image = nil
     }
 

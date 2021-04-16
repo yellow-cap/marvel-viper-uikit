@@ -1,6 +1,7 @@
 import UIKit
 
 struct HeroesCollectionViewProps: IViewProps {
+    let heroes: [Hero]
     let loadHeroes: () -> Void
 }
 
@@ -36,6 +37,8 @@ class HeroesCollectionView: UICollectionView,
         }
 
         self.props = props
+
+        reloadData()
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -43,7 +46,7 @@ class HeroesCollectionView: UICollectionView,
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        props?.heroes.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -51,7 +54,7 @@ class HeroesCollectionView: UICollectionView,
             return UICollectionViewCell()
         }
 
-        cell.update(name: "Name \(indexPath.item)", description: "Description \(indexPath.item)")
+        cell.update(HeroesCollectionViewCellProps(hero: props?.heroes[indexPath.item]))
         cell.backgroundColor = .red
 
         return cell
