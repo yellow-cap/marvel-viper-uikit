@@ -10,6 +10,7 @@ class HeroesCollectionView: UICollectionView,
         UICollectionViewDataSource,
         IView {
     private let cellReuseIdentifier = "heroes_collection_cell"
+    private let loadOffset = 4
     private var props: HeroesCollectionViewProps? = nil
 
     required init?(coder aDecoder: NSCoder) {
@@ -51,6 +52,14 @@ class HeroesCollectionView: UICollectionView,
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath) as? HeroesCollectionViewCell else {
             return UICollectionViewCell()
+        }
+
+        guard let heroes = props?.heroes, heroes.count > 0 else {
+            return UICollectionViewCell()
+        }
+
+        if indexPath.item == heroes.count - loadOffset {
+            props?.loadHeroes()
         }
 
         cell.update(HeroesCollectionViewCellProps(hero: props?.heroes[indexPath.item]))
