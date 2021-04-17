@@ -15,6 +15,7 @@
 		58C7A159385F6E0FC7F2083B /* HeroesApiResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A1B9BEB244A3D43E9302 /* HeroesApiResponseData.swift */; };
 		58C7A2CF0E213AAC89565F8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58C7AD2C8909A8987CF87140 /* Assets.xcassets */; };
 		58C7A2F37B1ACF940CA9A520 /* ApiUrlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A72167342BBFE2310997 /* ApiUrlBuilder.swift */; };
+		58C7A31EE00BD1F5709C63C6 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A72B7DE4303E95F7844C /* AvatarView.swift */; };
 		58C7A330DD8AA772014B6240 /* HeroesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7AF425EDF3B5CF58D7F94 /* HeroesPresenter.swift */; };
 		58C7A38BE30B6CD66A0A19C2 /* DbStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7AEE00C7B524088487AF1 /* DbStorage.swift */; };
 		58C7A3A09FFDD279A4E2FA8F /* IDbStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A8D2843612FB7844B916 /* IDbStorage.swift */; };
@@ -90,6 +91,7 @@
 		58C7A60B661E764CAA541074 /* HeroesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroesCollectionViewCell.swift; sourceTree = "<group>"; };
 		58C7A6DFC83EB0C19789353D /* Hero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 		58C7A72167342BBFE2310997 /* ApiUrlBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiUrlBuilder.swift; sourceTree = "<group>"; };
+		58C7A72B7DE4303E95F7844C /* AvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		58C7A81636324BAE08D749CB /* HeroesInteraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroesInteraction.swift; sourceTree = "<group>"; };
 		58C7A880EFDEC141281254E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58C7A8D2843612FB7844B916 /* IDbStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDbStorage.swift; sourceTree = "<group>"; };
@@ -195,6 +197,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		58C7A43A57F7E276159101F7 /* Avatar */ = {
+			isa = PBXGroup;
+			children = (
+				58C7A72B7DE4303E95F7844C /* AvatarView.swift */,
+			);
+			path = Avatar;
+			sourceTree = "<group>";
+		};
 		58C7A46E243719736D76824F /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,10 +234,19 @@
 			path = Errors;
 			sourceTree = "<group>";
 		};
+		58C7A5537C490FB893417CAA /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				58C7A43A57F7E276159101F7 /* Avatar */,
+			);
+			path = UIComponents;
+			sourceTree = "<group>";
+		};
 		58C7A75D6713EF752077CF24 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
 				58C7A8657432744794E1370A /* Heroes */,
+				58C7A5537C490FB893417CAA /* UIComponents */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -611,6 +630,7 @@
 				58C7A08AC105ADC6AA01CCEB /* HeroDbEntity.swift in Sources */,
 				58C7A3A09FFDD279A4E2FA8F /* IDbStorage.swift in Sources */,
 				58C7ADDE4E821C22D41D2B69 /* ArrayExtension.swift in Sources */,
+				58C7A31EE00BD1F5709C63C6 /* AvatarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

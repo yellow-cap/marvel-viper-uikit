@@ -100,7 +100,8 @@ class HeroesService: IHeroesService {
                 heroes.append(Hero(
                         id: object.id,
                         name: object.name,
-                        description: object.desc)
+                        description: object.desc,
+                        thumbnail: HeroThumbnail(path: "", extension: ""))
                 )
             }
 

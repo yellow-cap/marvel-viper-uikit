@@ -7,7 +7,7 @@ struct HeroesCollectionViewCellProps: IViewProps {
 class HeroesCollectionViewCell: UICollectionViewCell, IView {
     private var nameLabel = UILabel()
     private var descriptionLabel = UILabel()
-    private var imageView = UIImageView()
+    private var avatarView = AvatarView()
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -23,7 +23,6 @@ class HeroesCollectionViewCell: UICollectionViewCell, IView {
     override func prepareForReuse() {
         nameLabel.text = ""
         descriptionLabel.text = ""
-        imageView.image = nil
 
         super.prepareForReuse()
     }
@@ -35,7 +34,7 @@ class HeroesCollectionViewCell: UICollectionViewCell, IView {
 
         nameLabel.text = props.hero?.name ?? "-"
         descriptionLabel.text = props.hero?.description ?? "-"
-        imageView.image = nil
+        avatarView.update(AvatarViewProps(thumbnail: props.hero?.thumbnail))
     }
 
     private func initView() {
@@ -43,26 +42,24 @@ class HeroesCollectionViewCell: UICollectionViewCell, IView {
         nameLabel.textAlignment = .center
 
         descriptionLabel.font = UIFont.systemFont(ofSize: 14.0, weight: .light)
-
-        imageView.backgroundColor = .yellow
     }
 
     private func placeView() {
-        contentView.addSubview(imageView)
+        contentView.addSubview(avatarView)
         contentView.addSubview(nameLabel)
         contentView.addSubview(descriptionLabel)
 
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        avatarView.translatesAutoresizingMaskIntoConstraints = false
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
-            imageView.heightAnchor.constraint(equalTo: contentView.widthAnchor, constant: -24),
-            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
-            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
+            avatarView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
+            avatarView.heightAnchor.constraint(equalTo: contentView.widthAnchor, constant: -24),
+            avatarView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
+            avatarView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
 
-            nameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 4),
+            nameLabel.topAnchor.constraint(equalTo: avatarView.bottomAnchor, constant: 4),
             nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
             nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
 
