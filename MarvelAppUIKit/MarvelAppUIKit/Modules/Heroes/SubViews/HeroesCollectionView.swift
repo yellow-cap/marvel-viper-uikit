@@ -5,6 +5,7 @@ struct HeroesCollectionViewProps: IProps {
     let loadHeroes: () -> Void
     let loadAvatar: (URL, @escaping (Result<UIImage, Error>) -> Void) -> UUID?
     let cancelAvatarLoading: (UUID) -> Void
+    let routeToDetails: (Hero) -> Void
 }
 
 class HeroesCollectionView: UICollectionView,
@@ -76,6 +77,9 @@ class HeroesCollectionView: UICollectionView,
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: Foundation.IndexPath) {
+        guard let props = props else { return  }
+
         print("Tap on item \(indexPath.item)")
+        props.routeToDetails(props.heroes[indexPath.item])
     }
 }

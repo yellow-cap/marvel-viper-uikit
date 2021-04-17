@@ -11,11 +11,15 @@ class HeroesModule: IModule {
                 imageFetcher: ImageFetcher()
         )
         let presenter = HeroesPresenter()
+        let router = HeroesRouter()
 
         view.presenter = presenter
 
         presenter.interaction = interaction
         presenter.view = view
+        presenter.router = router
+
+        router.parentController = view
 
         interaction.presenter = presenter
 

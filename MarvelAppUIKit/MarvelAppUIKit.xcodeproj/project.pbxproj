@@ -35,7 +35,9 @@
 		58C7A6D5715B8BCD9DF71B8D /* IProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A3C80201DEBE81CE27D4 /* IProps.swift */; };
 		58C7A72E155011A58136364A /* HeroesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A4946FF70BEBA14FD611 /* HeroesCollectionView.swift */; };
 		58C7A7FB8554CA1B7FE5537A /* HeroesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A2A6FF85A7CC54A29EC9 /* HeroesService.swift */; };
+		58C7A7FDEFACA2F1D7B7DC22 /* IRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7AFFF83749252BCC6C221 /* IRouter.swift */; };
 		58C7A88344DDDE51E6823BE9 /* HeroesFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7AE7A75C0F0D32B6369A7 /* HeroesFetcher.swift */; };
+		58C7A8AF65EF434E4265A185 /* HeroesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A0EE4FD16CCC8A5DBA17 /* HeroesRouter.swift */; };
 		58C7A8F6E5B32B882870AC7C /* HeroThumbnailDbEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7AC69F10CDE94ED65C4F4 /* HeroThumbnailDbEntity.swift */; };
 		58C7A9F7DF8513E91F663A60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58C7A3AA4E61C3DB06270584 /* LaunchScreen.storyboard */; };
 		58C7AA8D2EC64AAC8972D6C3 /* HeroesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A9FDB71D2B3EC4D7EA61 /* HeroesView.swift */; };
@@ -82,6 +84,7 @@
 		58C7A0416BD84503974675ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		58C7A0B2770E9E0E4D34D057 /* ApiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		58C7A0E62110ABCBA510A202 /* ApiRequestType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiRequestType.swift; sourceTree = "<group>"; };
+		58C7A0EE4FD16CCC8A5DBA17 /* HeroesRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroesRouter.swift; sourceTree = "<group>"; };
 		58C7A1A68A54DF271A45BEFC /* HeroesModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroesModule.swift; sourceTree = "<group>"; };
 		58C7A1B9BEB244A3D43E9302 /* HeroesApiResponseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroesApiResponseData.swift; sourceTree = "<group>"; };
 		58C7A21A02A673AA45895E48 /* HeroThumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroThumbnail.swift; sourceTree = "<group>"; };
@@ -126,6 +129,7 @@
 		58C7AF8558EEDEF934CCE324 /* MarvelAppUIKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelAppUIKitTests.swift; sourceTree = "<group>"; };
 		58C7AF940F36A2A4277FA4A8 /* HeroesApiResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroesApiResponse.swift; sourceTree = "<group>"; };
 		58C7AFDDD9077A84BDF3D4F2 /* MarvelAppUIKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelAppUIKitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		58C7AFFF83749252BCC6C221 /* IRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IRouter.swift; sourceTree = "<group>"; };
 		756310B4B45AC525251D5C16 /* Pods_MarvelAppUIKit_MarvelAppUIKitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelAppUIKit_MarvelAppUIKitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F87B31D48940E605E8761C6 /* Pods-MarvelAppUIKit-MarvelAppUIKitUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelAppUIKit-MarvelAppUIKitUITests.release.xcconfig"; path = "Target Support Files/Pods-MarvelAppUIKit-MarvelAppUIKitUITests/Pods-MarvelAppUIKit-MarvelAppUIKitUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E4F4A7950BE15C552215BF09 /* Pods-MarvelAppUIKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelAppUIKit.release.xcconfig"; path = "Target Support Files/Pods-MarvelAppUIKit/Pods-MarvelAppUIKit.release.xcconfig"; sourceTree = "<group>"; };
@@ -293,6 +297,7 @@
 				58C7AF425EDF3B5CF58D7F94 /* HeroesPresenter.swift */,
 				58C7A81636324BAE08D749CB /* HeroesInteraction.swift */,
 				58C7A46E243719736D76824F /* SubViews */,
+				58C7A0EE4FD16CCC8A5DBA17 /* HeroesRouter.swift */,
 			);
 			path = Heroes;
 			sourceTree = "<group>";
@@ -354,6 +359,7 @@
 				58C7A9D1225702C6508044E7 /* IInteraction.swift */,
 				58C7AE47C0FF08A4F31022E8 /* IView.swift */,
 				58C7A3C80201DEBE81CE27D4 /* IProps.swift */,
+				58C7AFFF83749252BCC6C221 /* IRouter.swift */,
 			);
 			path = Viper;
 			sourceTree = "<group>";
@@ -671,6 +677,8 @@
 				58C7A503E320158AF978FD4C /* HeroDetailsModule.swift in Sources */,
 				58C7A0C5E4BE3EBDE212AACD /* HeroDetailsInteraction.swift in Sources */,
 				58C7A377F4B03E878A79FDCE /* HeroDetailsPresenter.swift in Sources */,
+				58C7A7FDEFACA2F1D7B7DC22 /* IRouter.swift in Sources */,
+				58C7A8AF65EF434E4265A185 /* HeroesRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

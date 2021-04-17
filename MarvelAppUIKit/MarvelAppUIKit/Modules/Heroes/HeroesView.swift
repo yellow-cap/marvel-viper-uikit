@@ -8,6 +8,7 @@ struct HeroesViewProps: IProps {
     let heroes: [Hero]
     let loadAvatar: (URL, @escaping (Result<UIImage, Error>) -> Void) -> UUID?
     let cancelAvatarLoading: (UUID) -> Void
+    let routeToDetails: (Hero) -> Void
 }
 
 class HeroesView: UIViewController, IHeroesView {
@@ -34,7 +35,8 @@ class HeroesView: UIViewController, IHeroesView {
                 heroes: props.heroes,
                 loadHeroes: getHeroes,
                 loadAvatar: props.loadAvatar,
-                cancelAvatarLoading: props.cancelAvatarLoading
+                cancelAvatarLoading: props.cancelAvatarLoading,
+                routeToDetails: props.routeToDetails
         ))
     }
 

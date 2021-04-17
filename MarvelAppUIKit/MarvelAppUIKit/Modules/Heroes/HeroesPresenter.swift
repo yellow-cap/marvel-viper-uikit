@@ -1,5 +1,6 @@
 protocol IHeroesPresenter: IPresenter {
     var interaction: IHeroesInteraction? { get set }
+    var router: IHeroesRouter? { get set }
     var view: IHeroesView? { get set }
     func getHeroes()
     func updateView(heroes: [Hero])
@@ -7,6 +8,7 @@ protocol IHeroesPresenter: IPresenter {
 
 class HeroesPresenter: IHeroesPresenter {
     var interaction: IHeroesInteraction?
+    var router: IHeroesRouter?
     weak var view: IHeroesView?
 
     func getHeroes() {
@@ -22,7 +24,10 @@ class HeroesPresenter: IHeroesPresenter {
                 HeroesViewProps(
                         heroes: heroes,
                         loadAvatar: interaction.loadImage,
-                        cancelAvatarLoading: interaction.cancelLoadingTask
+                        cancelAvatarLoading: interaction.cancelLoadingTask,
+                        routeToDetails: { hero in
+                            self.router?.routeTo(to: HeroesRouter.Route.heroDetails, props: nil)
+                        }
                 )
         )
     }
