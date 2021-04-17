@@ -4,6 +4,10 @@ protocol IHeroDetailsView: IView {
     var presenter: IHeroDetailsPresenter? { get set }
 }
 
+struct HeroDetailsViewProps: IProps {
+    let hero: Hero
+}
+
 class HeroDetailsView: UIViewController, IHeroDetailsView {
     var presenter: IHeroDetailsPresenter?
 
@@ -17,6 +21,7 @@ class HeroDetailsView: UIViewController, IHeroDetailsView {
 
     override func viewDidLoad() {
         view.backgroundColor = .systemBackground
+        presenter?.getHero()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -25,13 +30,16 @@ class HeroDetailsView: UIViewController, IHeroDetailsView {
     }
 
     func update(_ newProps: IProps) {
-        print("update Hero Details")
+        guard let props = newProps as? HeroDetailsViewProps else {
+            return
+        }
+        title = props.hero.name
+        label.text = "\(props.hero.id)"
     }
 
     private func initView() {
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 32.0, weight: .regular)
-        label.text = "Hero Details View"
     }
 
     private func placeView() {

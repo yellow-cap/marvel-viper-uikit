@@ -16,7 +16,7 @@ class HeroesRouter: IHeroesRouter {
 
         switch to {
         case .heroDetails:
-            let viewController = HeroDetailsModule().build()
+            let viewController = HeroDetailsModule().build(props)
             parentController?.navigationController?.pushViewController(viewController, animated: true)
         }
     }

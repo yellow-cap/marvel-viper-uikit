@@ -1,7 +1,7 @@
 import UIKit
 
 class HeroesModule: IModule {
-    func build() -> UIViewController {
+    func build(_ props: IProps? = nil) -> UIViewController {
         let view = HeroesView()
         let interaction = HeroesInteraction(
                 heroesService: HeroesService(

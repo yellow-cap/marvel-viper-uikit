@@ -1,5 +1,5 @@
 import UIKit
 
 protocol IModule: class {
-    func build() -> UIViewController
+    func build(_ props: IProps?) -> UIViewController
 }

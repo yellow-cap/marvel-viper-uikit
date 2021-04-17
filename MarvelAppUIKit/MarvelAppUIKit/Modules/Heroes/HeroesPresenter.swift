@@ -25,10 +25,15 @@ class HeroesPresenter: IHeroesPresenter {
                         heroes: heroes,
                         loadAvatar: interaction.loadImage,
                         cancelAvatarLoading: interaction.cancelLoadingTask,
-                        routeToDetails: { hero in
-                            self.router?.routeTo(to: HeroesRouter.Route.heroDetails, props: nil)
-                        }
+                        routeToDetails: routeToDetails
                 )
+        )
+    }
+
+    private func routeToDetails(hero: Hero) {
+        router?.routeTo(
+                to: HeroesRouter.Route.heroDetails,
+                props: HeroDetailsModuleProps(hero: hero)
         )
     }
 }
