@@ -74,4 +74,8 @@ class HeroesCollectionView: UICollectionView,
 
         return cell
     }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: Foundation.IndexPath) {
+        print("Tap on item \(indexPath.item)")
+    }
 }
