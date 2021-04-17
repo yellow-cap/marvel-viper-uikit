@@ -14,6 +14,16 @@ class HeroesPresenter: IHeroesPresenter {
     }
 
     func updateView(heroes: [Hero]) {
-        view?.update(HeroesViewProps(heroes: heroes))
+        guard let interaction = interaction else {
+            return
+        }
+
+        view?.update(
+                HeroesViewProps(
+                        heroes: heroes,
+                        loadAvatar: interaction.loadImage,
+                        cancelAvatarLoading: interaction.cancelLoadingTask
+                )
+        )
     }
 }

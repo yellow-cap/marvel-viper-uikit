@@ -7,7 +7,8 @@ class HeroesModule: IModule {
                 heroesService: HeroesService(
                         heroesFetcher: HeroesFetcher(apiFetcher: ApiFetcher()),
                         dbStorage: try! DbStorage()
-                )
+                ),
+                imageFetcher: ImageFetcher()
         )
         let presenter = HeroesPresenter()
 

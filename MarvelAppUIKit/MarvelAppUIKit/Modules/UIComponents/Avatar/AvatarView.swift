@@ -3,11 +3,13 @@ import Foundation
 
 struct AvatarViewProps: IViewProps {
     let thumbnail: HeroThumbnail?
+    let loadAvatar: (URL, @escaping (Result<UIImage, Error>) -> Void) -> UUID?
+    let cancelAvatarLoading: (UUID) -> Void
 }
 
 class AvatarView: UIView, IView {
     private var imageView = UIImageView()
-    private var imageFetcher = ImageFetcher()
+    private var props: AvatarViewProps? = nil
     var loadingTaskId: UUID? = nil
 
     required init?(coder aDecoder: NSCoder) {
@@ -25,11 +27,13 @@ class AvatarView: UIView, IView {
             return
         }
 
-        loadImage(props.thumbnail)
+        self.props = props
+
+        loadImage(props)
     }
 
-    private func loadImage(_ thumbnail: HeroThumbnail?) {
-        guard let thumbnail = thumbnail else {
+    private func loadImage(_ props: AvatarViewProps) {
+        guard let thumbnail = props.thumbnail else {
             return
         }
 
@@ -37,7 +41,7 @@ class AvatarView: UIView, IView {
             return
         }
 
-        loadingTaskId = imageFetcher.loadImage(url: url) { result in
+        loadingTaskId = props.loadAvatar(url) { result in
             do {
                 let image = try result.get()
                 DispatchQueue.main.async {
@@ -53,7 +57,7 @@ class AvatarView: UIView, IView {
         imageView.image = nil
 
         if loadingTaskId != nil {
-            imageFetcher.cancelLoadingTask(loadingTaskId!)
+            props?.cancelAvatarLoading(loadingTaskId!)
             loadingTaskId = nil
         }
     }

@@ -1,18 +1,24 @@
 import Foundation
+import UIKit
 
 protocol IHeroesInteraction: IInteraction {
     var presenter: IHeroesPresenter? { get set }
     func getHeroes()
+    func loadImage(url: URL, _ completionHandler: @escaping (Result<UIImage, Error>) -> Void) -> UUID?
+    func cancelLoadingTask(_ uuid: UUID)
 }
 
 class HeroesInteraction: IHeroesInteraction, HeroesServiceDelegate {
     weak var presenter: IHeroesPresenter?
     private var heroesService: IHeroesService
+    private var imageFetcher: IImageFetcher
 
     private var heroes = [Hero]()
 
-    init(heroesService: IHeroesService) {
+    init(heroesService: IHeroesService, imageFetcher: IImageFetcher) {
         self.heroesService = heroesService
+        self.imageFetcher = imageFetcher
+
         self.heroesService.delegate = self
     }
 
@@ -36,5 +42,13 @@ class HeroesInteraction: IHeroesInteraction, HeroesServiceDelegate {
 
         self.heroes.append(contentsOf: heroes)
         presenter?.updateView(heroes: self.heroes)
+    }
+
+    func loadImage(url: URL, _ completionHandler: @escaping (Result<UIImage, Error>) -> Void) -> UUID? {
+        imageFetcher.loadImage(url: url, completionHandler)
+    }
+
+    func cancelLoadingTask(_ uuid: UUID) {
+        imageFetcher.cancelLoadingTask(uuid)
     }
 }

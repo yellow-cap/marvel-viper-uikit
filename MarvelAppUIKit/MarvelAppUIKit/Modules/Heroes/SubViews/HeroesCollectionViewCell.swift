@@ -2,6 +2,8 @@ import UIKit
 
 struct HeroesCollectionViewCellProps: IViewProps {
     let hero: Hero?
+    let loadAvatar: (URL, @escaping (Result<UIImage, Error>) -> Void) -> UUID?
+    let cancelAvatarLoading: (UUID) -> Void
 }
 
 class HeroesCollectionViewCell: UICollectionViewCell, IView {
@@ -34,7 +36,12 @@ class HeroesCollectionViewCell: UICollectionViewCell, IView {
 
         nameLabel.text = props.hero?.name ?? "-"
         descriptionLabel.text = props.hero?.description ?? "-"
-        avatarView.update(AvatarViewProps(thumbnail: props.hero?.thumbnail))
+        avatarView.update(
+                AvatarViewProps(
+                        thumbnail: props.hero?.thumbnail,
+                        loadAvatar: props.loadAvatar,
+                        cancelAvatarLoading: props.cancelAvatarLoading)
+        )
     }
 
     private func initView() {

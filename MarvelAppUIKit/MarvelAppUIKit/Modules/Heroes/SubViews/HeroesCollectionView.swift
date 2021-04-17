@@ -3,6 +3,8 @@ import UIKit
 struct HeroesCollectionViewProps: IViewProps {
     let heroes: [Hero]
     let loadHeroes: () -> Void
+    let loadAvatar: (URL, @escaping (Result<UIImage, Error>) -> Void) -> UUID?
+    let cancelAvatarLoading: (UUID) -> Void
 }
 
 class HeroesCollectionView: UICollectionView,
@@ -50,19 +52,26 @@ class HeroesCollectionView: UICollectionView,
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let props = props else { return UICollectionViewCell() }
+
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath) as? HeroesCollectionViewCell else {
             return UICollectionViewCell()
         }
 
-        guard let heroes = props?.heroes, heroes.count > 0 else {
+        guard props.heroes.count > 0 else {
             return UICollectionViewCell()
         }
 
-        if indexPath.item == heroes.count - cellsBeforeLoading {
-            props?.loadHeroes()
+        if indexPath.item == props.heroes.count - cellsBeforeLoading {
+            props.loadHeroes()
         }
 
-        cell.update(HeroesCollectionViewCellProps(hero: props?.heroes[indexPath.item]))
+        cell.update(HeroesCollectionViewCellProps(
+                hero: props.heroes[indexPath.item],
+                loadAvatar: props.loadAvatar,
+                cancelAvatarLoading: props.cancelAvatarLoading)
+        )
+
         cell.backgroundColor = .red
 
         return cell

@@ -6,6 +6,8 @@ protocol IHeroesView: IView {
 
 struct HeroesViewProps: IViewProps {
     let heroes: [Hero]
+    let loadAvatar: (URL, @escaping (Result<UIImage, Error>) -> Void) -> UUID?
+    let cancelAvatarLoading: (UUID) -> Void
 }
 
 class HeroesView: UIViewController, IHeroesView {
@@ -30,7 +32,9 @@ class HeroesView: UIViewController, IHeroesView {
 
         heroesCollectionView.update(HeroesCollectionViewProps(
                 heroes: props.heroes,
-                loadHeroes: getHeroes
+                loadHeroes: getHeroes,
+                loadAvatar: props.loadAvatar,
+                cancelAvatarLoading: props.cancelAvatarLoading
         ))
     }
 
