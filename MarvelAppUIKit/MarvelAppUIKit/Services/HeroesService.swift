@@ -13,6 +13,7 @@ class HeroesService: IHeroesService {
     var delegate: HeroesServiceDelegate?
     private let fetcher: IHeroesFetcher
     private let dbStorage: IDbStorage
+    private let batchSize = 20
 
     init(heroesFetcher: IHeroesFetcher, dbStorage: IDbStorage) {
         fetcher = heroesFetcher
@@ -25,24 +26,26 @@ class HeroesService: IHeroesService {
 
             var heroes = [Hero]()
             DispatchQueue.global(qos: .background).async {
-                heroes = self?.fetchHeroesFromDb() ?? []
+                print("<<<DEV>>> HeroesService: Try to fetch data from db with offset \(loadingOffset)")
+                heroes = self?.fetchHeroesFromDb(loadingOffset) ?? []
                 semaphore.signal()
             }
 
             semaphore.wait()
 
             if heroes.isEmpty {
-                self?.fetchHeroesFromApi(loadingOffset: loadingOffset)
+                print("<<<DEV>>> HeroesService: Try to fetch data from api with offset \(loadingOffset)")
+                self?.fetchHeroesFromApi(loadingOffset)
             } else {
                 DispatchQueue.main.async {
+                    print("<<<DEV>>> HeroesService: Data fetched from db with offset \(loadingOffset)")
                     self?.delegate?.onGetHeroesComplete(heroes: heroes, error: nil)
                 }
             }
         }
     }
 
-    private func fetchHeroesFromApi(loadingOffset: Int) {
-        print("<<<DEV>>> Fetch data from api with offset \(loadingOffset)")
+    private func fetchHeroesFromApi(_ loadingOffset: Int) {
         fetcher.fetchHeroes(onFetchHeroesFromApiComplete, loadingOffset: loadingOffset)
     }
 
@@ -56,6 +59,7 @@ class HeroesService: IHeroesService {
             return
         }
 
+        print("<<<DEV>>> HeroesService: New batch fetched from api.")
         saveHeroesToDb(heroes)
         delegate?.onGetHeroesComplete(heroes: heroes, error: nil)
     }
@@ -70,6 +74,7 @@ class HeroesService: IHeroesService {
 
                 do {
                     try self?.dbStorage.insert(dbEntity: heroDbEntity)
+                    print("<<<DEV>>> HeroesService: New batch saved to db.")
                 } catch {
                     DispatchQueue.main.async {
                         self?.delegate?.onGetHeroesComplete(heroes: nil, error: error)
@@ -79,8 +84,7 @@ class HeroesService: IHeroesService {
         }
     }
 
-    private func fetchHeroesFromDb() -> [Hero] {
-        print("<<<DEV>>> Fetch data from db")
+    private func fetchHeroesFromDb(_ loadingOffset: Int) -> [Hero] {
         var heroes = [Hero]()
         do {
             let dbHeroes = try dbStorage.findAll(dbEntityType: HeroDbEntity.self)
@@ -100,7 +104,7 @@ class HeroesService: IHeroesService {
             delegate?.onGetHeroesComplete(heroes: nil, error: error)
         }
 
-        return heroes
+        return heroes.range(fromIndex: loadingOffset, toIndex: loadingOffset + batchSize)
     }
 }
 

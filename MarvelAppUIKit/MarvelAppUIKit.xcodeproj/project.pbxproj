@@ -37,6 +37,7 @@
 		58C7AB3FFF0C1E67E777FCC5 /* IPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A44402122DF873617CF3 /* IPresenter.swift */; };
 		58C7AB9E4F3AE3031B56D79B /* HeroesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A1A68A54DF271A45BEFC /* HeroesModule.swift */; };
 		58C7AC6CB8637BD38BB4292B /* IModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A2606E33DF7E237F9485 /* IModule.swift */; };
+		58C7ADDE4E821C22D41D2B69 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A3C34D9888A22522C92B /* ArrayExtension.swift */; };
 		58C7AE1507027F177B083C5F /* ApiFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A5CB12BDF658E5F35083 /* ApiFetcher.swift */; };
 		58C7AE72E544ABB66376DDA5 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A6DFC83EB0C19789353D /* Hero.swift */; };
 		58C7AE86EF3CF52ADB5F7BBD /* ApiRequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A0E62110ABCBA510A202 /* ApiRequestType.swift */; };
@@ -79,6 +80,7 @@
 		58C7A21A02A673AA45895E48 /* HeroThumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroThumbnail.swift; sourceTree = "<group>"; };
 		58C7A2606E33DF7E237F9485 /* IModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IModule.swift; sourceTree = "<group>"; };
 		58C7A2A6FF85A7CC54A29EC9 /* HeroesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroesService.swift; sourceTree = "<group>"; };
+		58C7A3C34D9888A22522C92B /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		58C7A3C80201DEBE81CE27D4 /* IViewProps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IViewProps.swift; sourceTree = "<group>"; };
 		58C7A44402122DF873617CF3 /* IPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPresenter.swift; sourceTree = "<group>"; };
 		58C7A47ECA1B4E6E442FB43C /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				58C7A47ECA1B4E6E442FB43C /* StringExtension.swift */,
+				58C7A3C34D9888A22522C92B /* ArrayExtension.swift */,
 			);
 			name = Extensions;
 			path = MarvelAppUIKit/Extensions;
@@ -607,6 +610,7 @@
 				58C7A66214F16060DD8D0EFD /* DbError.swift in Sources */,
 				58C7A08AC105ADC6AA01CCEB /* HeroDbEntity.swift in Sources */,
 				58C7A3A09FFDD279A4E2FA8F /* IDbStorage.swift in Sources */,
+				58C7ADDE4E821C22D41D2B69 /* ArrayExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
