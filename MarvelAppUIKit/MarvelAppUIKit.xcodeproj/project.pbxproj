@@ -39,6 +39,7 @@
 		58C7AB3FFF0C1E67E777FCC5 /* IPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A44402122DF873617CF3 /* IPresenter.swift */; };
 		58C7AB9E4F3AE3031B56D79B /* HeroesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A1A68A54DF271A45BEFC /* HeroesModule.swift */; };
 		58C7AC6CB8637BD38BB4292B /* IModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A2606E33DF7E237F9485 /* IModule.swift */; };
+		58C7ACBC9A75D57943E5AD9E /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A489370FB19470811E22 /* ImageFetcher.swift */; };
 		58C7ADDE4E821C22D41D2B69 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A3C34D9888A22522C92B /* ArrayExtension.swift */; };
 		58C7AE1507027F177B083C5F /* ApiFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A5CB12BDF658E5F35083 /* ApiFetcher.swift */; };
 		58C7AE72E544ABB66376DDA5 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A6DFC83EB0C19789353D /* Hero.swift */; };
@@ -86,6 +87,7 @@
 		58C7A3C80201DEBE81CE27D4 /* IViewProps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IViewProps.swift; sourceTree = "<group>"; };
 		58C7A44402122DF873617CF3 /* IPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPresenter.swift; sourceTree = "<group>"; };
 		58C7A47ECA1B4E6E442FB43C /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		58C7A489370FB19470811E22 /* ImageFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFetcher.swift; sourceTree = "<group>"; };
 		58C7A4946FF70BEBA14FD611 /* HeroesCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroesCollectionView.swift; sourceTree = "<group>"; };
 		58C7A5001B61A5450C68547F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		58C7A5CB12BDF658E5F35083 /* ApiFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiFetcher.swift; sourceTree = "<group>"; };
@@ -283,6 +285,14 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		58C7A9815C1EE2CDDE423F41 /* ImageFetcher */ = {
+			isa = PBXGroup;
+			children = (
+				58C7A489370FB19470811E22 /* ImageFetcher.swift */,
+			);
+			path = ImageFetcher;
+			sourceTree = "<group>";
+		};
 		58C7AA5EFCB5491D8EDA30E2 /* Database */ = {
 			isa = PBXGroup;
 			children = (
@@ -311,6 +321,7 @@
 				58C7A72167342BBFE2310997 /* ApiUrlBuilder.swift */,
 				58C7AE1EDC389D4503039E9D /* HeroesFetcher */,
 				58C7A1336AC96A64F2CBED3C /* Entities */,
+				58C7A9815C1EE2CDDE423F41 /* ImageFetcher */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -635,6 +646,7 @@
 				58C7ADDE4E821C22D41D2B69 /* ArrayExtension.swift in Sources */,
 				58C7A31EE00BD1F5709C63C6 /* AvatarView.swift in Sources */,
 				58C7A8F6E5B32B882870AC7C /* HeroThumbnailDbEntity.swift in Sources */,
+				58C7ACBC9A75D57943E5AD9E /* ImageFetcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

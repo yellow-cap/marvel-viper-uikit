@@ -21,10 +21,9 @@ class HeroesCollectionViewCell: UICollectionViewCell, IView {
     }
 
     override func prepareForReuse() {
+        super.prepareForReuse()
         nameLabel.text = ""
         descriptionLabel.text = ""
-
-        super.prepareForReuse()
     }
 
     func update(_ newProps: IViewProps) {
