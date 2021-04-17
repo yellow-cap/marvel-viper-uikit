@@ -29,7 +29,7 @@ class HeroesCollectionView: UICollectionView,
         delegate = self
         dataSource = self
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .blue
+        backgroundColor = .systemBackground
         register(HeroesCollectionViewCell.self, forCellWithReuseIdentifier: cellReuseIdentifier)
     }
 
@@ -71,8 +71,6 @@ class HeroesCollectionView: UICollectionView,
                 loadAvatar: props.loadAvatar,
                 cancelAvatarLoading: props.cancelAvatarLoading)
         )
-
-        cell.backgroundColor = .red
 
         return cell
     }

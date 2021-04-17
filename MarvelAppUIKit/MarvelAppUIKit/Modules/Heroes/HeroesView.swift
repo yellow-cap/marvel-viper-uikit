@@ -42,9 +42,9 @@ class HeroesView: UIViewController, IHeroesView {
         view.addSubview(heroesCollectionView)
 
         NSLayoutConstraint.activate([
-            heroesCollectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
-            heroesCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            heroesCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            heroesCollectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 40),
+            heroesCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            heroesCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             heroesCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
