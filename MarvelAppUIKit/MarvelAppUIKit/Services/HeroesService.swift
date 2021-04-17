@@ -46,7 +46,10 @@ class HeroesService: IHeroesService {
     }
 
     private func fetchHeroesFromApi(_ loadingOffset: Int) {
-        fetcher.fetchHeroes(onFetchHeroesFromApiComplete, loadingOffset: loadingOffset)
+        fetcher.fetchHeroes(
+                onFetchHeroesFromApiComplete,
+                loadingOffset: loadingOffset,
+                batchSize: batchSize)
     }
 
     private func onFetchHeroesFromApiComplete(heroes: [Hero]?, error: Error?) {
@@ -74,7 +77,6 @@ class HeroesService: IHeroesService {
 
                 do {
                     try self?.dbStorage.insert(dbEntity: heroDbEntity)
-                    print("<<<DEV>>> HeroesService: New batch saved to db.")
                 } catch {
                     DispatchQueue.main.async {
                         self?.delegate?.onGetHeroesComplete(heroes: nil, error: error)
@@ -82,6 +84,8 @@ class HeroesService: IHeroesService {
                 }
             }
         }
+
+        print("<<<DEV>>> HeroesService: New batch saved to db.")
     }
 
     private func fetchHeroesFromDb(_ loadingOffset: Int) -> [Hero] {

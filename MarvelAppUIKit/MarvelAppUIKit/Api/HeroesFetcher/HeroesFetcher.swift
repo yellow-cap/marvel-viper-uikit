@@ -1,7 +1,11 @@
 import Foundation
 
 protocol IHeroesFetcher {
-    func fetchHeroes(_ completionHandler: @escaping ([Hero]?, ApiError?) -> Void, loadingOffset: Int)
+    func fetchHeroes(
+            _ completionHandler: @escaping ([Hero]?, ApiError?) -> Void,
+            loadingOffset: Int,
+            batchSize: Int
+    )
 }
 
 class HeroesFetcher: IHeroesFetcher {
@@ -18,7 +22,8 @@ class HeroesFetcher: IHeroesFetcher {
 
     func fetchHeroes(
             _ completionHandler: @escaping ([Hero]?, ApiError?) -> Void,
-            loadingOffset: Int
+            loadingOffset: Int,
+            batchSize: Int
     ) {
         let path = ApiUrlBuilder.getHeroesUrl()
         let timeStamp = NSDate().timeIntervalSince1970
@@ -32,7 +37,8 @@ class HeroesFetcher: IHeroesFetcher {
                     "ts": "\(timeStamp)",
                     "hash": "\(timeStamp)\(ApiConstants.marvelApiPrivateKey)\(ApiConstants.marvelApiPublicKey)"
                             .md5(),
-                    "offset": "\(loadingOffset)"
+                    "offset": "\(loadingOffset)",
+                    "limit": "\(batchSize)"
                 ],
                 completionHandler: { [weak self] result in
                     self?.onFetchHeroesComplete(result, completionHandler)
