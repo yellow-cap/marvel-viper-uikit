@@ -8,7 +8,8 @@ struct AvatarViewProps: IViewProps {
 }
 
 class AvatarView: UIView, IView {
-    private var imageView = UIImageView()
+    private let imageView = UIImageView()
+    private let spinner = UIActivityIndicatorView(style: .gray)
     private var props: AvatarViewProps? = nil
     var loadingTaskId: UUID? = nil
 
@@ -33,6 +34,8 @@ class AvatarView: UIView, IView {
     }
 
     private func loadImage(_ props: AvatarViewProps) {
+        spinner.startAnimating()
+
         guard let thumbnail = props.thumbnail else {
             return
         }
@@ -45,6 +48,7 @@ class AvatarView: UIView, IView {
             do {
                 let image = try result.get()
                 DispatchQueue.main.async {
+                    self.spinner.stopAnimating()
                     self.imageView.image = image
                 }
             } catch {
@@ -64,13 +68,19 @@ class AvatarView: UIView, IView {
 
     private func placeView() {
         addSubview(imageView)
+        addSubview(spinner)
+
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        spinner.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: topAnchor),
             imageView.heightAnchor.constraint(equalTo: heightAnchor),
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: trailingAnchor)
+            imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+
+            spinner.centerXAnchor.constraint(equalTo: centerXAnchor),
+            spinner.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
 }
