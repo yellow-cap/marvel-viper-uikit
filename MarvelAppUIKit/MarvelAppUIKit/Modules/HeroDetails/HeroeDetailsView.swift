@@ -11,13 +11,17 @@ class HeroDetailsView: UIViewController, IHeroDetailsView {
 
     override func loadView() {
         super.loadView()
-
         initView()
         placeView()
     }
 
     override func viewDidLoad() {
         view.backgroundColor = .systemBackground
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = false
     }
 
     func update(_ newProps: IProps) {

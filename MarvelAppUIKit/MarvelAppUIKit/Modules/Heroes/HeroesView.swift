@@ -26,6 +26,11 @@ class HeroesView: UIViewController, IHeroesView {
         getHeroes()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
+
     func update(_ newProps: IProps) {
         guard let props = newProps as? HeroesViewProps else {
             return
