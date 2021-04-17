@@ -7,6 +7,8 @@ struct AvatarViewProps: IViewProps {
 
 class AvatarView: UIView, IView {
     private var imageView = UIImageView()
+    private var imageFetcher = ImageFetcher()
+    var loadingTaskId: UUID? = nil
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -35,15 +37,24 @@ class AvatarView: UIView, IView {
             return
         }
 
-        print("<<<DEV>>> Avatar url: \(url)")
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.imageView.image = image
-                    }
+        loadingTaskId = imageFetcher.loadImage(url: url) { result in
+            do {
+                let image = try result.get()
+                DispatchQueue.main.async {
+                    self.imageView.image = image
                 }
+            } catch {
+                print("Image loading error \(error)")
             }
+        }
+    }
+
+    func prepareForReuse() {
+        imageView.image = nil
+
+        if loadingTaskId != nil {
+            imageFetcher.cancelLoadingTask(loadingTaskId!)
+            loadingTaskId = nil
         }
     }
 

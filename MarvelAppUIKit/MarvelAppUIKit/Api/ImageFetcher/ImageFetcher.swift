@@ -3,7 +3,7 @@ import UIKit
 
 protocol IImageFetcher {
     func loadImage(url: URL, _ completionHandler: @escaping (Result<UIImage, Error>) -> Void) -> UUID?
-    func cancelLoad(_ uuid: UUID)
+    func cancelLoadingTask(_ uuid: UUID)
 }
 
 class ImageFetcher: IImageFetcher {
@@ -45,7 +45,7 @@ class ImageFetcher: IImageFetcher {
         return uuid
     }
 
-    func cancelLoad(_ uuid: UUID) {
+    func cancelLoadingTask(_ uuid: UUID) {
         runningTasks[uuid]?.cancel()
         runningTasks.removeValue(forKey: uuid)
     }

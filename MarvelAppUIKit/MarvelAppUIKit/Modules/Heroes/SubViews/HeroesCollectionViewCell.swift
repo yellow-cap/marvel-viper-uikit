@@ -24,6 +24,7 @@ class HeroesCollectionViewCell: UICollectionViewCell, IView {
         super.prepareForReuse()
         nameLabel.text = ""
         descriptionLabel.text = ""
+        avatarView.prepareForReuse()
     }
 
     func update(_ newProps: IViewProps) {
