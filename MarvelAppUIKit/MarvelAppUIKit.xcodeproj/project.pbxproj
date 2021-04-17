@@ -32,6 +32,7 @@
 		58C7A72E155011A58136364A /* HeroesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A4946FF70BEBA14FD611 /* HeroesCollectionView.swift */; };
 		58C7A7FB8554CA1B7FE5537A /* HeroesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A2A6FF85A7CC54A29EC9 /* HeroesService.swift */; };
 		58C7A88344DDDE51E6823BE9 /* HeroesFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7AE7A75C0F0D32B6369A7 /* HeroesFetcher.swift */; };
+		58C7A8F6E5B32B882870AC7C /* HeroThumbnailDbEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7AC69F10CDE94ED65C4F4 /* HeroThumbnailDbEntity.swift */; };
 		58C7A9F7DF8513E91F663A60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58C7A3AA4E61C3DB06270584 /* LaunchScreen.storyboard */; };
 		58C7AA8D2EC64AAC8972D6C3 /* HeroesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A9FDB71D2B3EC4D7EA61 /* HeroesView.swift */; };
 		58C7AB06286DABF70B8ABFA8 /* IInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A9D1225702C6508044E7 /* IInteraction.swift */; };
@@ -101,6 +102,7 @@
 		58C7A9FDB71D2B3EC4D7EA61 /* HeroesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroesView.swift; sourceTree = "<group>"; };
 		58C7AA234BE757A25432F462 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		58C7AB8F351438F86F4DBE44 /* IError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IError.swift; sourceTree = "<group>"; };
+		58C7AC69F10CDE94ED65C4F4 /* HeroThumbnailDbEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroThumbnailDbEntity.swift; sourceTree = "<group>"; };
 		58C7AD2C8909A8987CF87140 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		58C7AD7E055F670C92ED93CD /* ApiConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiConstants.swift; sourceTree = "<group>"; };
 		58C7AE0187E6E6A9180FD093 /* MarvelAppUIKitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelAppUIKitUITests.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				58C7AE672FFD75304020342F /* HeroDbEntity.swift */,
+				58C7AC69F10CDE94ED65C4F4 /* HeroThumbnailDbEntity.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -631,6 +634,7 @@
 				58C7A3A09FFDD279A4E2FA8F /* IDbStorage.swift in Sources */,
 				58C7ADDE4E821C22D41D2B69 /* ArrayExtension.swift in Sources */,
 				58C7A31EE00BD1F5709C63C6 /* AvatarView.swift in Sources */,
+				58C7A8F6E5B32B882870AC7C /* HeroThumbnailDbEntity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -75,6 +75,12 @@ class HeroesService: IHeroesService {
                 heroDbEntity.name = hero.name
                 heroDbEntity.desc = hero.description
 
+                let heroThumbDbEntity = HeroThumbnailDbEntity()
+                heroThumbDbEntity.path = hero.thumbnail.path
+                heroThumbDbEntity.extension = hero.thumbnail.extension
+
+                heroDbEntity.thumbnail = heroThumbDbEntity
+
                 do {
                     try self?.dbStorage.insert(dbEntity: heroDbEntity)
                 } catch {
@@ -101,7 +107,9 @@ class HeroesService: IHeroesService {
                         id: object.id,
                         name: object.name,
                         description: object.desc,
-                        thumbnail: HeroThumbnail(path: "", extension: ""))
+                        thumbnail: HeroThumbnail(
+                                path: object.thumbnail?.path ?? "",
+                                extension: object.thumbnail?.extension ?? ""))
                 )
             }
 
