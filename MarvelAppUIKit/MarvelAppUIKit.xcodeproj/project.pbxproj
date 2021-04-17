@@ -32,7 +32,7 @@
 		58C7A66214F16060DD8D0EFD /* DbError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A02747EC23DA7DE57014 /* DbError.swift */; };
 		58C7A68B380636D9A47D2812 /* IError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7AB8F351438F86F4DBE44 /* IError.swift */; };
 		58C7A6A059B50D792F2FC6CB /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A0B2770E9E0E4D34D057 /* ApiError.swift */; };
-		58C7A6D5715B8BCD9DF71B8D /* IViewProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A3C80201DEBE81CE27D4 /* IViewProps.swift */; };
+		58C7A6D5715B8BCD9DF71B8D /* IProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A3C80201DEBE81CE27D4 /* IProps.swift */; };
 		58C7A72E155011A58136364A /* HeroesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A4946FF70BEBA14FD611 /* HeroesCollectionView.swift */; };
 		58C7A7FB8554CA1B7FE5537A /* HeroesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A2A6FF85A7CC54A29EC9 /* HeroesService.swift */; };
 		58C7A88344DDDE51E6823BE9 /* HeroesFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7AE7A75C0F0D32B6369A7 /* HeroesFetcher.swift */; };
@@ -88,7 +88,7 @@
 		58C7A2606E33DF7E237F9485 /* IModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IModule.swift; sourceTree = "<group>"; };
 		58C7A2A6FF85A7CC54A29EC9 /* HeroesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroesService.swift; sourceTree = "<group>"; };
 		58C7A3C34D9888A22522C92B /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
-		58C7A3C80201DEBE81CE27D4 /* IViewProps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IViewProps.swift; sourceTree = "<group>"; };
+		58C7A3C80201DEBE81CE27D4 /* IProps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IProps.swift; sourceTree = "<group>"; };
 		58C7A3E9140A9D5A33BDF560 /* HeroDetailsModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroDetailsModule.swift; sourceTree = "<group>"; };
 		58C7A44402122DF873617CF3 /* IPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPresenter.swift; sourceTree = "<group>"; };
 		58C7A47ECA1B4E6E442FB43C /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
@@ -353,7 +353,7 @@
 				58C7A44402122DF873617CF3 /* IPresenter.swift */,
 				58C7A9D1225702C6508044E7 /* IInteraction.swift */,
 				58C7AE47C0FF08A4F31022E8 /* IView.swift */,
-				58C7A3C80201DEBE81CE27D4 /* IViewProps.swift */,
+				58C7A3C80201DEBE81CE27D4 /* IProps.swift */,
 			);
 			path = Viper;
 			sourceTree = "<group>";
@@ -651,7 +651,7 @@
 				58C7A7FB8554CA1B7FE5537A /* HeroesService.swift in Sources */,
 				58C7A72E155011A58136364A /* HeroesCollectionView.swift in Sources */,
 				58C7A47544921B081D7FC9EC /* HeroesCollectionViewCell.swift in Sources */,
-				58C7A6D5715B8BCD9DF71B8D /* IViewProps.swift in Sources */,
+				58C7A6D5715B8BCD9DF71B8D /* IProps.swift in Sources */,
 				58C7A5D34AE036AC81234C4F /* StringExtension.swift in Sources */,
 				58C7AE72E544ABB66376DDA5 /* Hero.swift in Sources */,
 				58C7A12F21EB1179349B6B58 /* HeroThumbnail.swift in Sources */,

@@ -20,7 +20,7 @@ class HeroDetailsView: UIViewController, IHeroDetailsView {
         view.backgroundColor = .systemBackground
     }
 
-    func update(_ newProps: IViewProps) {
+    func update(_ newProps: IProps) {
         print("update Hero Details")
     }
 

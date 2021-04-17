@@ -1,6 +1,6 @@
 import UIKit
 
-struct HeroesCollectionViewCellProps: IViewProps {
+struct HeroesCollectionViewCellProps: IProps {
     let hero: Hero?
     let loadAvatar: (URL, @escaping (Result<UIImage, Error>) -> Void) -> UUID?
     let cancelAvatarLoading: (UUID) -> Void
@@ -29,7 +29,7 @@ class HeroesCollectionViewCell: UICollectionViewCell, IView {
         avatarView.prepareForReuse()
     }
 
-    func update(_ newProps: IViewProps) {
+    func update(_ newProps: IProps) {
         guard let props = newProps as? HeroesCollectionViewCellProps else {
             return
         }

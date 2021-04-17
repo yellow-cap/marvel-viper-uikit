@@ -1,7 +1,7 @@
 import UIKit
 import Foundation
 
-struct AvatarViewProps: IViewProps {
+struct AvatarViewProps: IProps {
     let thumbnail: HeroThumbnail?
     let loadAvatar: (URL, @escaping (Result<UIImage, Error>) -> Void) -> UUID?
     let cancelAvatarLoading: (UUID) -> Void
@@ -23,7 +23,7 @@ class AvatarView: UIView, IView {
         placeView()
     }
 
-    func update(_ newProps: IViewProps) {
+    func update(_ newProps: IProps) {
         guard let props = newProps as? AvatarViewProps else {
             return
         }

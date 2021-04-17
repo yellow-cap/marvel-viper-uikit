@@ -1,3 +1,3 @@
 protocol IView: class {
-    func update(_ newProps: IViewProps)
+    func update(_ newProps: IProps)
 }

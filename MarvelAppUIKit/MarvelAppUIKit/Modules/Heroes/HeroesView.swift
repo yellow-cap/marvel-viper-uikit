@@ -4,7 +4,7 @@ protocol IHeroesView: IView {
     var presenter: IHeroesPresenter? { get set }
 }
 
-struct HeroesViewProps: IViewProps {
+struct HeroesViewProps: IProps {
     let heroes: [Hero]
     let loadAvatar: (URL, @escaping (Result<UIImage, Error>) -> Void) -> UUID?
     let cancelAvatarLoading: (UUID) -> Void
@@ -25,7 +25,7 @@ class HeroesView: UIViewController, IHeroesView {
         getHeroes()
     }
 
-    func update(_ newProps: IViewProps) {
+    func update(_ newProps: IProps) {
         guard let props = newProps as? HeroesViewProps else {
             return
         }
