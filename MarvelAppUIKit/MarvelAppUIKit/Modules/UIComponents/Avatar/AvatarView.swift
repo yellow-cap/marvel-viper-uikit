@@ -9,7 +9,7 @@ struct AvatarViewProps: IViewProps {
 
 class AvatarView: UIView, IView {
     private let imageView = UIImageView()
-    private let spinner = UIActivityIndicatorView(style: .gray)
+    private let spinner = UIActivityIndicatorView(style: .medium)
     private var props: AvatarViewProps? = nil
     var loadingTaskId: UUID? = nil
 
