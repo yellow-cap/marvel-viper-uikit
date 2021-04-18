@@ -13,7 +13,8 @@ class HeroDetailsView: UIViewController, IHeroDetailsView {
 
     private let segmentedControl = UISegmentedControl()
     private var selectedSegmentIndex: Int = 0
-    private var tableView = HeroDetailsTableView()
+    private let tableView = HeroDetailsTableView()
+    private var props: HeroDetailsViewProps? = nil
 
     override func loadView() {
         super.loadView()
@@ -35,6 +36,8 @@ class HeroDetailsView: UIViewController, IHeroDetailsView {
         guard let props = newProps as? HeroDetailsViewProps else {
             return
         }
+
+        self.props = props
 
         title = props.hero.name
         tableView.update(HeroDetailsTableViewProps(
@@ -76,9 +79,36 @@ class HeroDetailsView: UIViewController, IHeroDetailsView {
     }
     
     @objc private func onSegmentChange(sender: UISegmentedControl) {
+        guard let props = props else {
+            return
+        }
+
         selectedSegmentIndex = sender.selectedSegmentIndex
 
-        print("Segment selected: \(selectedSegmentIndex)")
+        switch selectedSegmentIndex {
+        case SegmentedControlSections.comics.rawValue:
+            tableView.update(HeroDetailsTableViewProps(
+                    details: props.hero.comics.items.map { $0.name }
+            ))
+
+        case SegmentedControlSections.stories.rawValue:
+            tableView.update(HeroDetailsTableViewProps(
+                    details: props.hero.stories.items.map { $0.name }
+            ))
+
+        case SegmentedControlSections.events.rawValue:
+            tableView.update(HeroDetailsTableViewProps(
+                    details: props.hero.events.items.map { $0.name }
+            ))
+
+        case SegmentedControlSections.series.rawValue:
+            tableView.update(HeroDetailsTableViewProps(
+                    details: props.hero.series.items.map { $0.name }
+            ))
+            
+        default:
+            print("No such segment with id \(selectedSegmentIndex) in segmented control")
+        }
     }
 }
 
