@@ -12,7 +12,6 @@ protocol IApiFetcher {
 
 class ApiFetcher: IApiFetcher {
     private let session = URLSession.shared
-    private let decoder = JSONDecoder()
 
     func request(
             type: ApiRequestType,

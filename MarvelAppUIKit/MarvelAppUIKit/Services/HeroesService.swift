@@ -109,8 +109,12 @@ class HeroesService: IHeroesService {
                         description: object.desc,
                         thumbnail: HeroThumbnail(
                                 path: object.thumbnail?.path ?? "",
-                                extension: object.thumbnail?.extension ?? ""))
-                )
+                                extension: object.thumbnail?.extension ?? ""),
+                        comics: HeroDetailsItem(items: []),
+                        series: HeroDetailsItem(items: []),
+                        stories: HeroDetailsItem(items: []),
+                        events: HeroDetailsItem(items: [])
+                ))
             }
 
         } catch {
