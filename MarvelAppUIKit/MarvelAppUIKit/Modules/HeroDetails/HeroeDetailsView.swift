@@ -38,7 +38,7 @@ class HeroDetailsView: UIViewController, IHeroDetailsView {
 
         title = props.hero.name
         tableView.update(HeroDetailsTableViewProps(
-                details: []
+                details: props.hero.comics.items.map { $0.name }
         ))
     }
 

@@ -37,7 +37,7 @@ class HeroDetailsTableView: UITableView,
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = UITableViewCell()
-        cell.textLabel?.text = props?.details[indexPath.section]
+        cell.textLabel?.text = props?.details[indexPath.item]
 
         return cell
     }

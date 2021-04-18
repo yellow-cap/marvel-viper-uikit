@@ -70,16 +70,7 @@ class HeroesService: IHeroesService {
     private func saveHeroesToDb(_ heroes: [Hero]) {
         DispatchQueue.global(qos: .background).async { [weak self] in
             for hero in heroes {
-                let heroDbEntity = HeroDbEntity()
-                heroDbEntity.id = hero.id
-                heroDbEntity.name = hero.name
-                heroDbEntity.desc = hero.description
-
-                let heroThumbDbEntity = HeroThumbnailDbEntity()
-                heroThumbDbEntity.path = hero.thumbnail.path
-                heroThumbDbEntity.extension = hero.thumbnail.extension
-
-                heroDbEntity.thumbnail = heroThumbDbEntity
+                let heroDbEntity = HeroServiceHelper.buildHeroDbEntityFromEntity(hero)
 
                 do {
                     try self?.dbStorage.insert(dbEntity: heroDbEntity)
@@ -103,18 +94,9 @@ class HeroesService: IHeroesService {
                     return
                 }
 
-                heroes.append(Hero(
-                        id: object.id,
-                        name: object.name,
-                        description: object.desc,
-                        thumbnail: HeroThumbnail(
-                                path: object.thumbnail?.path ?? "",
-                                extension: object.thumbnail?.extension ?? ""),
-                        comics: HeroDetailsItem(items: []),
-                        series: HeroDetailsItem(items: []),
-                        stories: HeroDetailsItem(items: []),
-                        events: HeroDetailsItem(items: [])
-                ))
+                heroes.append(
+                        HeroServiceHelper.buildHeroEntityFromDbEntity(object)
+                )
             }
 
         } catch {
