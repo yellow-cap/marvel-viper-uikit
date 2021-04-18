@@ -69,10 +69,25 @@ class HeroDetailsView: UIViewController, IHeroDetailsView {
     }
 
     private func setupSegmentedControl() {
-        segmentedControl.insertSegment(withTitle: "Comics", at: 0, animated: false)
-        segmentedControl.insertSegment(withTitle: "Stories", at: 1, animated: false)
-        segmentedControl.insertSegment(withTitle: "Events", at: 2, animated: false)
-        segmentedControl.insertSegment(withTitle: "Series", at: 3, animated: false)
+        segmentedControl.insertSegment(
+                withTitle: StringResources.comicsSegmentTitle,
+                at: SegmentedControlSections.comics.rawValue,
+                animated: false)
+
+        segmentedControl.insertSegment(
+                withTitle: StringResources.storiesSegmentTitle,
+                at: SegmentedControlSections.stories.rawValue,
+                animated: false)
+
+        segmentedControl.insertSegment(
+                withTitle: StringResources.eventsSegmentTitle,
+                at: SegmentedControlSections.events.rawValue,
+                animated: false)
+
+        segmentedControl.insertSegment(
+                withTitle: StringResources.seriesSegmentTitle,
+                at: SegmentedControlSections.series.rawValue,
+                animated: false)
 
         segmentedControl.selectedSegmentIndex = selectedSegmentIndex
         segmentedControl.addTarget(self, action: #selector(onSegmentChange), for: .valueChanged)

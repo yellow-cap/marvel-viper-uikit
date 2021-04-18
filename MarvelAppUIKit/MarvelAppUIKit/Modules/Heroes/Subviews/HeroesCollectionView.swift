@@ -79,7 +79,6 @@ class HeroesCollectionView: UICollectionView,
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: Foundation.IndexPath) {
         guard let props = props else { return  }
 
-        print("Tap on item \(indexPath.item)")
         props.routeToDetails(props.heroes[indexPath.item])
     }
 }

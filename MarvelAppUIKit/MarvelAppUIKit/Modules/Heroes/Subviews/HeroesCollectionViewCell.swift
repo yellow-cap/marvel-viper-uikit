@@ -34,8 +34,9 @@ class HeroesCollectionViewCell: UICollectionViewCell, IView {
             return
         }
 
-        nameLabel.text = props.hero?.name ?? "-"
-        descriptionLabel.text = props.hero?.description ?? "-"
+        nameLabel.text = getHeroName(props.hero?.name)
+        descriptionLabel.text = getHeroDescription(props.hero?.description)
+
         avatarView.update(
                 AvatarViewProps(
                         thumbnail: props.hero?.thumbnail,
@@ -74,5 +75,21 @@ class HeroesCollectionViewCell: UICollectionViewCell, IView {
             descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
             descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12)
         ])
+    }
+
+    private func getHeroName(_ name: String?) -> String {
+        guard let name = name, !name.isEmpty else {
+            return StringResources.noHeroName
+        }
+
+        return name
+    }
+
+    private func getHeroDescription(_ desc: String?) -> String {
+        guard let desc = desc, !desc.isEmpty else {
+            return StringResources.noHeroDescription
+        }
+
+        return desc
     }
 }
