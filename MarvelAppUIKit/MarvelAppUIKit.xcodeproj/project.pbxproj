@@ -37,6 +37,7 @@
 		58C7A7FB8554CA1B7FE5537A /* HeroesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A2A6FF85A7CC54A29EC9 /* HeroesService.swift */; };
 		58C7A7FDEFACA2F1D7B7DC22 /* IRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7AFFF83749252BCC6C221 /* IRouter.swift */; };
 		58C7A88344DDDE51E6823BE9 /* HeroesFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7AE7A75C0F0D32B6369A7 /* HeroesFetcher.swift */; };
+		58C7A8A707448138247D3F1D /* HeroDetailsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A6BF02CE45E9046EE143 /* HeroDetailsTableView.swift */; };
 		58C7A8AF65EF434E4265A185 /* HeroesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A0EE4FD16CCC8A5DBA17 /* HeroesRouter.swift */; };
 		58C7A8F6E5B32B882870AC7C /* HeroThumbnailDbEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7AC69F10CDE94ED65C4F4 /* HeroThumbnailDbEntity.swift */; };
 		58C7A9F7DF8513E91F663A60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58C7A3AA4E61C3DB06270584 /* LaunchScreen.storyboard */; };
@@ -101,6 +102,7 @@
 		58C7A5CB12BDF658E5F35083 /* ApiFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiFetcher.swift; sourceTree = "<group>"; };
 		58C7A60B661E764CAA541074 /* HeroesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroesCollectionViewCell.swift; sourceTree = "<group>"; };
 		58C7A65794F36F2D6240D3AE /* HeroeDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroeDetailsView.swift; sourceTree = "<group>"; };
+		58C7A6BF02CE45E9046EE143 /* HeroDetailsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroDetailsTableView.swift; sourceTree = "<group>"; };
 		58C7A6DFC83EB0C19789353D /* Hero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 		58C7A72167342BBFE2310997 /* ApiUrlBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiUrlBuilder.swift; sourceTree = "<group>"; };
 		58C7A72B7DE4303E95F7844C /* AvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				58C7A3E9140A9D5A33BDF560 /* HeroDetailsModule.swift */,
 				58C7A811B81C7B5B02CF7229 /* HeroDetailsInteraction.swift */,
 				58C7A9B50229E83A4CED1EFD /* HeroDetailsPresenter.swift */,
+				58C7A73A5D10F1248624612C /* Subviews */,
 			);
 			path = HeroDetails;
 			sourceTree = "<group>";
@@ -233,13 +236,13 @@
 			path = Avatar;
 			sourceTree = "<group>";
 		};
-		58C7A46E243719736D76824F /* SubViews */ = {
+		58C7A46E243719736D76824F /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
 				58C7A4946FF70BEBA14FD611 /* HeroesCollectionView.swift */,
 				58C7A60B661E764CAA541074 /* HeroesCollectionViewCell.swift */,
 			);
-			path = SubViews;
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 		58C7A4D641EDA337F163D6EB /* Extensions */ = {
@@ -270,6 +273,14 @@
 			path = UIComponents;
 			sourceTree = "<group>";
 		};
+		58C7A73A5D10F1248624612C /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				58C7A6BF02CE45E9046EE143 /* HeroDetailsTableView.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
 		58C7A75D6713EF752077CF24 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -296,7 +307,7 @@
 				58C7A9FDB71D2B3EC4D7EA61 /* HeroesView.swift */,
 				58C7AF425EDF3B5CF58D7F94 /* HeroesPresenter.swift */,
 				58C7A81636324BAE08D749CB /* HeroesInteraction.swift */,
-				58C7A46E243719736D76824F /* SubViews */,
+				58C7A46E243719736D76824F /* Subviews */,
 				58C7A0EE4FD16CCC8A5DBA17 /* HeroesRouter.swift */,
 			);
 			path = Heroes;
@@ -679,6 +690,7 @@
 				58C7A377F4B03E878A79FDCE /* HeroDetailsPresenter.swift in Sources */,
 				58C7A7FDEFACA2F1D7B7DC22 /* IRouter.swift in Sources */,
 				58C7A8AF65EF434E4265A185 /* HeroesRouter.swift in Sources */,
+				58C7A8A707448138247D3F1D /* HeroDetailsTableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

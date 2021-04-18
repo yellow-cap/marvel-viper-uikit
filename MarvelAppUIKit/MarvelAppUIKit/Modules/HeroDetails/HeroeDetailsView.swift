@@ -9,18 +9,11 @@ struct HeroDetailsViewProps: IProps {
 }
 
 class HeroDetailsView: UIViewController, IHeroDetailsView {
-    private enum SegmentedControlSections: Int {
-        case comics = 0
-        case stories = 1
-        case events = 2
-        case series = 3
-    }
-
     var presenter: IHeroDetailsPresenter?
 
-    private let label: UILabel = UILabel()
     private let segmentedControl = UISegmentedControl()
     private var selectedSegmentIndex: Int = 0
+    private var tableView = HeroDetailsTableView()
 
     override func loadView() {
         super.loadView()
@@ -42,33 +35,33 @@ class HeroDetailsView: UIViewController, IHeroDetailsView {
         guard let props = newProps as? HeroDetailsViewProps else {
             return
         }
+
         title = props.hero.name
-        label.text = "\(props.hero.id)"
+        tableView.update(HeroDetailsTableViewProps(
+                details: []
+        ))
     }
 
     private func initView() {
-        label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 32.0, weight: .regular)
-
         setupSegmentedControl()
     }
 
     private func placeView() {
-        view.addSubview(label)
         view.addSubview(segmentedControl)
+        view.addSubview(tableView)
 
-        label.translatesAutoresizingMaskIntoConstraints = false
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        tableView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             segmentedControl.topAnchor.constraint(equalTo: view.topAnchor, constant: 102),
             segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12),
             segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12),
 
-            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            label.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            label.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            label.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            tableView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
 
@@ -86,5 +79,14 @@ class HeroDetailsView: UIViewController, IHeroDetailsView {
         selectedSegmentIndex = sender.selectedSegmentIndex
 
         print("Segment selected: \(selectedSegmentIndex)")
+    }
+}
+
+extension HeroDetailsView {
+    private enum SegmentedControlSections: Int {
+        case comics = 0
+        case stories = 1
+        case events = 2
+        case series = 3
     }
 }
