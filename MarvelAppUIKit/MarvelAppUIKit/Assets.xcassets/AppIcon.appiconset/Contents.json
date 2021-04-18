@@ -1,21 +1,25 @@
 {
   "images" : [
     {
+      "filename" : "marvel-40x40.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
+      "filename" : "marvel-60x60.jpg",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "20x20"
     },
     {
+      "filename" : "marvel-58x58.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
+      "filename" : "marvel-87x87.jpg",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "29x29"
